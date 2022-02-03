@@ -1,5 +1,7 @@
 import uvicorn
+from typing import Optional
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -8,12 +10,12 @@ app = FastAPI()
 def home():
     return {"Hello": "World"}
 
+class Item(BaseModel):
+    name: str
 
 @app.post("/prediction")
-def get_potability(data):
-    # received = data.dict()
-
-    return {"Prediction": data}
+def get_potability(item: Item):
+    return item
 
 
 if __name__ == "__main__":
