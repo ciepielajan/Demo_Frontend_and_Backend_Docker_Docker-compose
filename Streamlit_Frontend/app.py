@@ -19,6 +19,3 @@ if hall_response.ok:
 else:
     st.write(f"{hall_response.json().get('detail')}")
 
-
-# st.text("Fixed width text")
-# st.markdown("_Markdown_")  # see *
