@@ -11,7 +11,7 @@ def home():
     return {"Hello": "World"}
 
 class Item(BaseModel):
-    name: str
+    Hello: str
 
 @app.post("/prediction")
 def get_potability(item: Item):

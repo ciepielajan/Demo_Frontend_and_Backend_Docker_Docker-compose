@@ -3,14 +3,14 @@ import requests
 
 
 data_test = {
-    "name": "Foo",
+    "Hello": "World",
 }
 
 
 # prediction_url = "http://127.0.0.1:8000/prediction"
 prediction_url = "http://fastapi:8000/prediction"
 
-st.write("http://fastapi -v11")
+st.write("fastapi - v10")
 
 hall_response = requests.post(url=prediction_url, json=data_test)
 
