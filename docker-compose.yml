@@ -3,30 +3,24 @@ version: "3.7"
 services:
   frontend:
     build: Streamlit_Frontend
+    depends_on:
+      - fastapi       #<--- WAŻNE
     ports:
       - 8501:8501
-    # networks:
-    #   AIservice:
-    #     aliases:
-    #       - frontend.docker
-    # depends_on:
-    #   - backend
-    volumes:
-      - ./Streamlit_Frontend:/app
-      - ./storage:/storage
+    networks:
+      - deploy_network
+
   backend:
     build: FastAPI_Backend
     ports:
       - 8000:8000
-    #   networks:
-    #     AIservice:
-    #       aliases:
-    #         - backend.docker
-    volumes:
-      - ./FastAPI_Backend:/app
-      - ./storage:/storage
-networks:
-  internal-network:
-    internal: true
-  external-network: null
+    networks:
+      - deploy_network
+    container_name: fastapi #<--- WAŻNE
 
+networks:
+  deploy_network:
+    driver: bridge
+
+
+# prediction_url = "http://fastapi:8000/prediction"  #<--- WAŻNE W PLIKU Z requests
