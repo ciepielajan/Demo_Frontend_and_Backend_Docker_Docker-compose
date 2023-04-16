@@ -3,11 +3,11 @@ import requests
 
 
 data_test = {
-    "Hello": "World",
+    "Hello": "Janek",
 }
 
 
-# prediction_url = "http://127.0.0.1:8000/prediction"
+# prediction_url = "http://127.0.0.2:8000/prediction"
 prediction_url = "http://fastapi:8000/prediction"
 
 st.write("fastapi - v10")
