@@ -8,7 +8,8 @@ sudo apt  install docker-compose
 
 ## run
 ```bash
-docker-compose -f .\docker-compose.yml up
+docker-compose up
+docker-compose -f ./docker-compose.yml up
 ```
 
 ## bardzo ważne

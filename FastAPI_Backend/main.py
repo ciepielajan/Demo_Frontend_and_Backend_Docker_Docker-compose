@@ -1,7 +1,7 @@
 import uvicorn
-from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Dict, Union, Any
 
 app = FastAPI()
 
@@ -11,10 +11,12 @@ def home():
     return {"Hello": "World"}
 
 class Item(BaseModel):
-    Hello: str
+    data: Dict[str, Any]
 
 @app.post("/prediction")
 def get_potability(item: Item):
+    data = item.data
+    data["age"] = 34
     return item
 
 
