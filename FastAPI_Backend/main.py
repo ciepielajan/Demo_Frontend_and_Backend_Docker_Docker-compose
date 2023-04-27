@@ -1,7 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import Dict, Union, Any
+
 
 app = FastAPI()
 
@@ -10,13 +9,10 @@ app = FastAPI()
 def home():
     return {"Hello": "World"}
 
-class Item(BaseModel):
-    data: Dict[str, Any]
-
 @app.post("/prediction")
-def get_potability(item: Item):
-    data = item.data
-    data["age"] = 34
+def get_prediction(item: dict): # uwaga, fastapi wymusza typing. Bez tego front będzie zwracał błąd. Może być bardziej rozbudowany jako pydatic :)
+    data = item["data"]
+    data["age"] = 35
     return item
 
 
